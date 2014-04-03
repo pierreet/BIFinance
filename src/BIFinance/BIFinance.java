@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -52,21 +53,16 @@ public class BIFinance {
             
             for(int s=0; s<stocks.getLength() ; s++){
 
-
                 Node stock = stocks.item(s);
                 
                 System.out.println(stock.getAttributes().getNamedItem("name").getNodeValue());
                 System.out.println(stock.getAttributes().getNamedItem("id").getNodeValue());
                 System.out.println(stock.getAttributes().getNamedItem("benchmark").getNodeValue());
                 System.out.println(stock.getAttributes().getNamedItem("benchID").getNodeValue());                
-                String url = "https://ichart.finance.yahoo.com/table.csv?"
-                        + "s="+stock.getAttributes().getNamedItem("id").getNodeValue()+"&"
-                        + "d=2&e=31&f="+ end.getYear()
-                        + "&g=d"
-                        + "&a=0&b=3&c="+ start.getYear()
-                        + "&ignore=.csv";
-                System.out.println(url);
-            
+                
+                URLGenerator url = new URLGenerator(stock, start, end);
+                
+                System.out.println(url.getStockURL());                
             }   
 
 

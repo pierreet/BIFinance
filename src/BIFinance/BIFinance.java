@@ -60,8 +60,10 @@ public class BIFinance {
                 
                 URLGenerator url = new URLGenerator(stock, start, end);
                                 
-                File fileStock = new File("data/"+stock.getAttributes().getNamedItem("name").getNodeValue()+".csv");
+                File fileStock = new File("data/"+stock.getAttributes().getNamedItem("id").getNodeValue()+".csv");
                 Downloader.Downloader(url.getStockURL(), fileStock);
+                File fileBench = new File("data/"+stock.getAttributes().getNamedItem("benchID").getNodeValue()+".csv");
+                Downloader.Downloader(url.getStockURL(), fileBench);
                 
             }   
 

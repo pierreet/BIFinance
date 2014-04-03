@@ -1,0 +1,10 @@
+<input stardate="2010-10-10">
+        <stock  benchID = "^FCHI"
+                        benchmark = "CAC40"
+                        country = "FR"
+                        id = "BNP.PA"
+                        industry = "Banks"
+                        name = "BNP Paribas"
+                        sector = "Bank"
+                        zone = "EU"/>
+</input>

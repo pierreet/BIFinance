@@ -6,12 +6,10 @@ package BIFinance;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -61,8 +59,10 @@ public class BIFinance {
                 System.out.println(stock.getAttributes().getNamedItem("benchID").getNodeValue());                
                 
                 URLGenerator url = new URLGenerator(stock, start, end);
+                                
+                File fileStock = new File("data/"+stock.getAttributes().getNamedItem("name").getNodeValue()+".csv");
+                Downloader.Downloader(url.getStockURL(), fileStock);
                 
-                System.out.println(url.getStockURL());                
             }   
 
 

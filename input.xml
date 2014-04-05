@@ -7,4 +7,20 @@
                         name = "BNP Paribas"
                         sector = "Bank"
                         zone = "EU"/>
+		<stock  benchID = "^FCHI"
+                        benchmark = "CAC40"
+                        country = "FR"
+                        id = "CS.PA"
+                        industry = "Banks"
+                        name = "AXA SA"
+                        sector = "Financial"
+                        zone = "Europe"/>
+		<stock  benchID = "^IXIC"
+                        benchmark = "NASDAQ"
+                        country = "US"
+                        id = "AAPL"
+                        industry = "Technology"
+                        name = "AXA SA"
+                        sector = "Technology"
+                        zone = "USA"/>
 </input>

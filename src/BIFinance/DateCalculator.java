@@ -7,8 +7,8 @@
 package BIFinance;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.TreeMap;
 
 /**
@@ -25,13 +25,16 @@ public class DateCalculator {
          * @return
          */
         public static ArrayList<Date> fixSteps(Date startdate, Date enddate, int step){
-                ArrayList<Date> stepDates = new ArrayList<Date>(); // Liste des étapes 
+                ArrayList<Date> stepDates = new ArrayList<Date>();
                 stepDates.add((Date) startdate.clone());
                 Date date = (Date) startdate.clone();
                 try {
                         while(enddate.compareTo(date)> 0){
+                                Calendar c = Calendar.getInstance(); 
                                 Date date2 = (Date) stepDates.get(stepDates.size()-1).clone();
-                                date2.setTime(date2.getTime()+(step*24*3600*1000));
+                                c.setTime(date2); 
+                                c.add(Calendar.DATE, step);
+                                date2 = c.getTime();
                                 stepDates.add(date2);
                                 date = (Date) date2.clone();
                         }
@@ -51,23 +54,28 @@ public class DateCalculator {
          * @param data
          * @return
          */
-        public static TreeMap<Date, Double> getDatesValues(ArrayList<Date> stepsDates, HashMap<Date, Double> data){
+        public static TreeMap<Date, Double> getDatesValues(ArrayList<Date> stepsDates, TreeMap<Date, Double> data){
                 
                 TreeMap<Date, Double> values = new TreeMap<Date, Double>();
+                Calendar c = Calendar.getInstance(); 
                 
-                for(Date stepDates : stepsDates){ // Penser à revenir ici
+                for(Date stepDates : stepsDates){
+                    
                         if( data.get(stepDates) != null){
                                 values.put(stepDates, data.get(stepDates));
-                        }
-                        else{
+                        }else{
                                 boolean found = false;
                                 int i = -1;
                                 while(!found && i > -10){
                                         try {
-                                                stepDates.setTime(stepDates.getTime()+(-24*3600*1000)); // -1 jour
+                                                c.setTime(stepDates); 
+                                                c.add(Calendar.DATE, -1);
+                                                stepDates = c.getTime();//-1 jour
                                                 if( data.get(stepDates) != null){
                                                         double tmpvalue = data.get(stepDates);
-                                                        stepDates.setTime(stepDates.getTime()+(-i*24*3600*1000));
+                                                        c.setTime(stepDates); 
+                                                        c.add(Calendar.DATE, -i);
+                                                        stepDates = c.getTime();//-i jour
                                                         values.put(stepDates, tmpvalue);
                                                         found = true;
                                                 }

@@ -33,20 +33,20 @@ public class URLGenerator {
                                 
                 stockURL ="http://ichart.yahoo.com/table.csv?s=";
                 stockURL += stock.getAttributes().getNamedItem("id").getNodeValue()
-                        +"&a="+(calStart.get(Calendar.MONTH)+1)
+                        +"&a="+(calStart.get(Calendar.MONTH))
                         +"&b="+calStart.get(Calendar.DAY_OF_MONTH)
                         +"&c="+calStart.get(Calendar.YEAR)
-                        +"&d="+(calEnd.get(Calendar.MONTH)+1)
+                        +"&d="+(calEnd.get(Calendar.MONTH))
                         +"&e="+calEnd.get(Calendar.DAY_OF_MONTH)
                         +"&f="+calEnd.get(Calendar.YEAR)
                         +"&g=d&ignore=.csv";
                 
                 benchURL ="http://ichart.yahoo.com/table.csv?s=";
                 benchURL += stock.getAttributes().getNamedItem("benchID").getNodeValue()
-                        +"&a="+(calStart.get(Calendar.MONTH)+1)
+                        +"&a="+(calStart.get(Calendar.MONTH))
                         +"&b="+calStart.get(Calendar.DAY_OF_MONTH)
                         +"&c="+calStart.get(Calendar.YEAR)
-                        +"&d="+(calEnd.get(Calendar.MONTH)+1)
+                        +"&d="+(calEnd.get(Calendar.MONTH))
                         +"&e="+calEnd.get(Calendar.DAY_OF_MONTH)
                         +"&f="+calEnd.get(Calendar.YEAR)
                         +"&g=d&ignore=.csv";

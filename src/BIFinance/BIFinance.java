@@ -124,6 +124,15 @@ public class BIFinance {
                     Attr priceBench = out.createAttribute("priceBench");
                     priceBench.setValue(datasBenchmark.get((Date)e.getKey()).toString());
                     obs.setAttributeNode(priceBench);
+                    Attr mm4 = out.createAttribute("mm4");
+                    mm4.setValue(String.valueOf(Indicator.getMoyenneMobile(datasAction, 1, (Date)e.getKey())));
+                    obs.setAttributeNode(mm4);
+                    Attr mm12 = out.createAttribute("mm12");
+                    mm12.setValue(String.valueOf(Indicator.getMoyenneMobile(datasAction, 3, (Date)e.getKey())));
+                    obs.setAttributeNode(mm12);
+                    Attr mm24 = out.createAttribute("mm24");
+                    mm24.setValue(String.valueOf(Indicator.getMoyenneMobile(datasAction, 6, (Date)e.getKey())));
+                    obs.setAttributeNode(mm24);
                 }
                 
                 //indicator

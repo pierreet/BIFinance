@@ -122,6 +122,35 @@ public class Indicator {
                     return 0.0;
             }
         }
+
+    
+    
+    public static double getMoyenneMobile(TreeMap<Date, Double> datas, int period, Date from){
+       
+        double moy = 0.0;
+        Calendar c = Calendar.getInstance();
+        c.setTime(from);
+        c.add(Calendar.DATE, -7*period*4);
+        
+        if(datas.get(c.getTime()) != null){
+            try {
+                Date endDate = (Date) from.clone();
+                for(int i = 0; i < period*4;i++){
+                        moy += datas.get(endDate); 
+                        c.setTime(endDate); 
+                        c.add(Calendar.DATE, -7);
+                        endDate = c.getTime();
+                }               
+                return moy/(period*4);
+            } catch (Exception e) {
+                    e.printStackTrace();
+            }
+        }
+        
+        return 0.0;
+    }
+    
+    
     public static double moyenne(TreeMap<Date, Double> datas, int period){
        
         double moy = 0.0;
@@ -142,6 +171,8 @@ public class Indicator {
         }
         return 0.0;
     }
+    
+    
     
     public static double moyennePerf(TreeMap<Date, Double> datas, int period){
         double moy = 0.0;

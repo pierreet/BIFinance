@@ -137,10 +137,7 @@ public class BIFinance {
                 
                 //indicator
 		Element indicators = out.createElement("indicators");
-		stockXML.appendChild(indicators);
-		Attr te = out.createAttribute("TE");
-		te.setValue(String.valueOf(Indicator.getTrackingError(datasAction, datasBenchmark, 3)));
-		indicators.setAttributeNode(te);                
+		stockXML.appendChild(indicators);               
                 int i=3;
                 while(i <= 12){
                     Element ind = out.createElement("indicator");
@@ -168,6 +165,18 @@ public class BIFinance {
                     
                     i *= 2;
                 }
+                
+                Element tee = out.createElement("trackingError");
+		stockXML.appendChild(tee);
+		Attr te = out.createAttribute("te");
+		te.setValue(String.valueOf(Indicator.getTrackingError(datasAction, datasBenchmark, 3)));
+		tee.setAttributeNode(te); 
+                
+                Element ire = out.createElement("informationRatio");
+		stockXML.appendChild(ire);
+		Attr ir = out.createAttribute("ir");
+		ir.setValue(String.valueOf(Indicator.getIR(datasAction, datasBenchmark, 3)));
+		ire.setAttributeNode(ir);
                                                 
             }   
                 

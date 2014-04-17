@@ -102,11 +102,8 @@ public class DateCalculator {
                                 datasAdjusted.put(date, 100.0);
                                 lastValue = datas.get(date);
                                 cpt++;
-                        }
-                        else{
+                        }else
                                 datasAdjusted.put(date, 100.0*datas.get(date)/lastValue);
-                                lastValue = datas.get(date);
-                        }
                         
                 }
                 

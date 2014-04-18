@@ -85,6 +85,12 @@ public class BIFinance {
 		Attr benchmark = out.createAttribute("benchmark");
 		benchmark.setValue(stock.getAttributes().getNamedItem("benchmark").getNodeValue());
 		stockXML.setAttributeNode(benchmark);
+		Attr sector = out.createAttribute("sector");
+		sector.setValue(stock.getAttributes().getNamedItem("sector").getNodeValue());
+		stockXML.setAttributeNode(sector);
+		Attr zone = out.createAttribute("zone");
+		zone.setValue(stock.getAttributes().getNamedItem("zone").getNodeValue());
+		stockXML.setAttributeNode(zone);
                  
                 URLGenerator url = new URLGenerator(stock, start, end);
                 
